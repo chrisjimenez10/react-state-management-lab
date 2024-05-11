@@ -1,6 +1,8 @@
 //Import
 import { useState } from "react";
 import "./App.css";
+import Fighters from "./components/Fighters/Fighters";
+import Team from "./components/Team/Team";
 
 //Parent Component
 const App = () => {
@@ -84,20 +86,20 @@ const App = () => {
   const [addedFighterMessage, setAddedFighterMessage] = useState(""); //NOTE: If we want to display messages based on state change, we NEED to create state variables (regular variables declared and assigned within the functions will not render in the UI)
  
   //Event Handlers
-  const handleAddFighter = (fighter) => {
-      const newTeam = [...team, fighter] // Following React principles of state variable immutability, we create a copy of the state and add the new ojbect to the array
-      if(money < fighter.price){ //Logic to check state of money - if money is less than the price of a fighter, then we exit from function and fighter is NOT added 
-        console.log("Not enough money");
-        return; //NOTE: If we don't exit from function with return statement, we can add one more fighter even if money is less than fighter price because we would be updating money state before checking if there is sufficient money
-      }else{
-        setTeam(newTeam);
-        setMoney(money - fighter.price); //Subtracts fighter price from state variable by using the setMoney state setter function to update state variable
-        setTotalStrength(totalStrength + fighter.strength);
-        setTotalAgility(totalAgility + fighter.agility);
-        setAddedFighterMessage(`Added ${fighter.name} to the team`);
-      }
-      console.log(newTeam, money)
-  };
+  // const handleAddFighter = (fighter) => {
+  //     const newTeam = [...team, fighter] // Following React principles of state variable immutability, we create a copy of the state and add the new ojbect to the array
+  //     if(money < fighter.price){ //Logic to check state of money - if money is less than the price of a fighter, then we exit from function and fighter is NOT added 
+  //       console.log("Not enough money");
+  //       return; //NOTE: If we don't exit from function with return statement, we can add one more fighter even if money is less than fighter price because we would be updating money state before checking if there is sufficient money
+  //     }else{
+  //       setTeam(newTeam);
+  //       setMoney(money - fighter.price); //Subtracts fighter price from state variable by using the setMoney state setter function to update state variable
+  //       setTotalStrength(totalStrength + fighter.strength);
+  //       setTotalAgility(totalAgility + fighter.agility);
+  //       setAddedFighterMessage(`Added ${fighter.name} to the team`);
+  //     }
+  //     console.log(newTeam, money)
+  // };
 
   const handleRemoveFighter = (mainFighter, mainIndex) => {
     //Initially I was confused and not deleting the selected fighter beceause of parameter naming between the parameters in the event handler and the filter method - the return statement is saying "Filter out and return a new array that DOES NOT have the element we CLICKED based on its index value(acting as its id for the DOM)"
@@ -115,7 +117,7 @@ const App = () => {
   return (
     <>
       <h1>Zombie Fighters</h1>
-      <h3>Money: {money}</h3>
+      <h3>Money: ${money}</h3>
       <h3>Team Strength: {totalStrength}</h3>
       <h3>Team Agility: {totalAgility}</h3>
       <h3>Team: {team.length === 0 ? "Pick some team members!" : addedFighterMessage}</h3>
@@ -126,7 +128,7 @@ const App = () => {
             <li>
             <img src={fighter.img}/>
               <h4>{fighter.name}</h4>
-              <h4>Price: {fighter.price}</h4>
+              <h4>Price: ${fighter.price}</h4>
               <h4>Strength: {fighter.strength}</h4>
               <h4>Agility: {fighter.agility}</h4>
               <button id="remove-btn" onClick={()=> handleRemoveFighter(fighter, index)}>Remove</button>
@@ -136,7 +138,7 @@ const App = () => {
       })}
       </div>
       <h3>Fighters</h3>
-      <div className="fighters-container">
+      {/* <div className="fighters-container">
       {zombieFighters.map((zombieFighter, index)=>{
         return (
           <ul key={index}>
@@ -150,6 +152,24 @@ const App = () => {
             </li>
           </ul>
         )
+      })}
+      </div> */}
+      <div className="fighters-container">
+      {zombieFighters.map((zombieFighter, index)=>{
+        return <Fighters
+        key={index}
+        fighters={zombieFighter}
+        team={team}
+        setTeam={setTeam}
+        money={money}
+        setMoney={setMoney}
+        totalStrength={totalStrength}
+        setTotalStrength={setTotalStrength}
+        totalAgility={totalAgility}
+        setTotalAgility={setTotalAgility}
+        addedFighterMessage={addedFighterMessage}
+        setAddedFighterMessage={setAddedFighterMessage}
+        />
       })}
       </div>
     </>
