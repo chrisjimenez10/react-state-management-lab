@@ -3,7 +3,7 @@
 }
 
 ul {
-  outline: 2px solid black;
+  /* outline: 2px solid black; */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

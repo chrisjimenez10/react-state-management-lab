@@ -79,6 +79,9 @@ const App = () => {
       img: 'https://via.placeholder.com/150/602b9e',
     },
   ]);
+  const [totalStrength, setTotalStrength] = useState(0);
+  const [totalAgility, setTotalAgility] = useState(0);
+  const [addedFighterMessage, setAddedFighterMessage] = useState(""); //NOTE: If we want to display messages based on state change, we NEED to create state variables (regular variables declared and assigned within the functions will not render in the UI)
  
   //Event Handlers
   const handleAddFighter = (fighter) => {
@@ -89,17 +92,33 @@ const App = () => {
       }else{
         setTeam(newTeam);
         setMoney(money - fighter.price); //Subtracts fighter price from state variable by using the setMoney state setter function to update state variable
+        setTotalStrength(totalStrength + fighter.strength);
+        setTotalAgility(totalAgility + fighter.agility);
+        setAddedFighterMessage(`Added ${fighter.name} to the team`);
       }
       console.log(newTeam, money)
-  }
+  };
+
+  const handleRemoveFighter = (mainFighter, mainIndex) => {
+    //Initially I was confused and not deleting the selected fighter beceause of parameter naming between the parameters in the event handler and the filter method - the return statement is saying "Filter out and return a new array that DOES NOT have the element we CLICKED based on its index value(acting as its id for the DOM)"
+    const reducedTeam = [...team].filter((subFighter, subindex)=>{
+      return mainIndex !== subindex;
+    });
+    setTeam(reducedTeam);
+    setMoney(money + mainFighter.price);
+    setTotalStrength(totalStrength - mainFighter.strength);
+    setTotalAgility(totalAgility - mainFighter.agility);
+    setAddedFighterMessage(`Removed ${mainFighter.name} from the team`);
+    console.log(mainFighter, mainIndex);
+  };
 
   return (
     <>
       <h1>Zombie Fighters</h1>
       <h3>Money: {money}</h3>
-      <h3>Team Strength: </h3>
-      <h3>Team Agility: </h3>
-      <h3>Team: {team.length === 0 ? "Pick some team members!" : message}</h3>
+      <h3>Team Strength: {totalStrength}</h3>
+      <h3>Team Agility: {totalAgility}</h3>
+      <h3>Team: {team.length === 0 ? "Pick some team members!" : addedFighterMessage}</h3>
       <div className="team-container">
       {team.map((fighter, index)=>{
         return (
@@ -110,6 +129,7 @@ const App = () => {
               <h4>Price: {fighter.price}</h4>
               <h4>Strength: {fighter.strength}</h4>
               <h4>Agility: {fighter.agility}</h4>
+              <button id="remove-btn" onClick={()=> handleRemoveFighter(fighter, index)}>Remove</button>
             </li>
           </ul>
         )
@@ -126,7 +146,7 @@ const App = () => {
               <h4>Price: {zombieFighter.price}</h4>
               <h4>Strength: {zombieFighter.strength}</h4>
               <h4>Agility: {zombieFighter.agility}</h4>
-              <button id="button" onClick={()=> handleAddFighter(zombieFighter)}>Add</button>
+              <button id="add-button" onClick={()=> handleAddFighter(zombieFighter)}>Add</button>
             </li>
           </ul>
         )
