@@ -1,10 +1,10 @@
-//Import
+//--------------- Import ---------------\\
 import { useState } from "react";
 import "./App.css";
 import Fighters from "./components/Fighters/Fighters";
 import Team from "./components/Team/Team";
 
-//Parent Component
+//--------------- Parent Component ---------------\\
 const App = () => {
   //State Variable, State Setter Function, Hook Function(initial state)
   const [team, setTeam] = useState([]);
@@ -15,77 +15,78 @@ const App = () => {
       price: 12,
       strength: 6,
       agility: 4,
-      img: 'https://via.placeholder.com/150/92c952',
+      img: 'https://picresize.com/images/rsz_survivor-fighter.jpg',
     },
     {
       name: 'Scavenger',
       price: 10,
       strength: 5,
       agility: 5,
-      img: 'https://via.placeholder.com/150/771796',
+      img: 'https://picresize.com/images/rsz_scavenger-fighter.jpg',
     },
     {
       name: 'Shadow',
       price: 18,
       strength: 7,
       agility: 8,
-      img: 'https://via.placeholder.com/150/24f355',
+      img: 'https://picresize.com/images/rsz_shadow-fighter.jpg',
     },
     {
       name: 'Tracker',
       price: 14,
       strength: 7,
       agility: 6,
-      img: 'https://via.placeholder.com/150/d32776',
+      img: 'https://picresize.com/images/rsz_tracker-fighter.jpg',
     },
     {
       name: 'Sharpshooter',
       price: 20,
       strength: 6,
       agility: 8,
-      img: 'https://via.placeholder.com/150/1ee8a4',
+      img: 'https://picresize.com/images/rsz_sharpshooter-fighter.jpg',
     },
     {
       name: 'Medic',
       price: 15,
       strength: 5,
       agility: 7,
-      img: 'https://via.placeholder.com/150/66b7d2',
+      img: 'https://picresize.com/images/rsz_medic-fighter.jpg',
     },
     {
       name: 'Engineer',
       price: 16,
       strength: 6,
       agility: 5,
-      img: 'https://via.placeholder.com/150/56acb2',
+      img: 'https://picresize.com/images/rsz_engineer-fighter.jpg',
     },
     {
       name: 'Brawler',
       price: 11,
       strength: 8,
       agility: 3,
-      img: 'https://via.placeholder.com/150/8985dc',
+      img: 'https://picresize.com/images/rsz_brawler-fighter.jpg',
     },
     {
       name: 'Infiltrator',
       price: 17,
       strength: 5,
       agility: 9,
-      img: 'https://via.placeholder.com/150/392537',
+      img: 'https://picresize.com/images/rsz_infiltrator-fighter.jpg',
     },
     {
       name: 'Leader',
       price: 22,
       strength: 7,
       agility: 6,
-      img: 'https://via.placeholder.com/150/602b9e',
+      img: 'https://picresize.com/images/rsz_leader-fighter.jpg',
     },
   ]);
   const [totalStrength, setTotalStrength] = useState(0);
   const [totalAgility, setTotalAgility] = useState(0);
   const [addedFighterMessage, setAddedFighterMessage] = useState(""); //NOTE: If we want to display messages based on state change, we NEED to create state variables (regular variables declared and assigned within the functions will not render in the UI)
  
-  //Event Handlers
+  //---------- Event Handlers ----------\\
+
   // const handleAddFighter = (fighter) => {
   //     const newTeam = [...team, fighter] // Following React principles of state variable immutability, we create a copy of the state and add the new ojbect to the array
   //     if(money < fighter.price){ //Logic to check state of money - if money is less than the price of a fighter, then we exit from function and fighter is NOT added 
@@ -121,7 +122,7 @@ const App = () => {
       <h3>Team Strength: {totalStrength}</h3>
       <h3>Team Agility: {totalAgility}</h3>
       <h3>Team: {team.length === 0 ? "Pick some team members!" : addedFighterMessage}</h3>
-      <div className="team-container">
+      {/* <div className="team-container">
       {team.map((fighter, index)=>{
         return (
           <ul key={index}>
@@ -136,6 +137,9 @@ const App = () => {
           </ul>
         )
       })}
+      </div> */}
+      <div className="team-container">
+        
       </div>
       <h3>Fighters</h3>
       {/* <div className="fighters-container">

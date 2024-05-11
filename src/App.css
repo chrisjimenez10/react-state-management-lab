@@ -26,4 +26,13 @@ h4 {
 
 button {
   margin-top: 2px;
+  cursor: pointer;
+  background-color: hsla(0, 0%, 80%, 1);
+  border-radius: 6px;
+  box-shadow: 1px 1px 1px black;
+}
+
+button:hover {
+  background-color: hsla(0, 0%, 80%, 0.65);
+  transform: scale(1.05);
 }
