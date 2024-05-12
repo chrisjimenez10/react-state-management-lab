@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
 
 * {
-  background-color: hsla(0, 0%, 45%, 1);
+  /* background-image: url("/images/zombie-city.jpg");
+  background-size: 1990px 1100px; */
   color: white;
   font-family: "Black Ops One", system-ui;
   font-weight: lighter;
+}
+
+body {
+  background-image: url("/images/zombie-city.jpg");
+  background-size: 1990px 1100px;
 }
 
 ul {
@@ -14,7 +20,8 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 2px 2px 2px white;
+  background-color: hsla(0, 0%, 36%, 0.6);
 }
 
 li {
@@ -34,9 +41,9 @@ h4 {
 button {
   margin-top: 2px;
   cursor: pointer;
-  background-color: hsla(0, 0%, 80%, 1);
+  background-color: black;
   border-radius: 6px;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 1px 1px 1px white;
 }
 
 button:hover {

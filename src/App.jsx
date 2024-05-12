@@ -117,6 +117,7 @@ const App = () => {
 
   return (
     <>
+      <body>
       <h1>Zombie Fighters</h1>
       <h3>Money: ${money}</h3>
       <h3>Team Strength: {totalStrength}</h3>
@@ -193,6 +194,7 @@ const App = () => {
         />
       })}
       </div>
+      </body>
     </>
   );
 }
