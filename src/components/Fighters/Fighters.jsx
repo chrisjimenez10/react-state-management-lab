@@ -2,7 +2,7 @@
 const Fighters = (props) => {
     const {fighters, team, setTeam, money, setMoney, totalStrength, setTotalStrength, totalAgility, setTotalAgility, setAddedFighterMessage} = props;
 
-    //Event Handler
+    //---------- Event Handler ----------\\
     const handleAddFighter = (fighter) => {
         const newTeam = [...team, fighter] // Following React principles of state variable immutability, we create a copy of the state and add the new ojbect to the array
         if(money < fighter.price){ //Logic to check state of money - if money is less than the price of a fighter, then we exit from function and fighter is NOT added 

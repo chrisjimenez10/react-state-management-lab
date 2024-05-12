@@ -15,70 +15,70 @@ const App = () => {
       price: 12,
       strength: 6,
       agility: 4,
-      img: 'https://picresize.com/images/rsz_survivor-fighter.jpg',
+      img: '/images/rsz_survivor-fighter.jpg',
     },
     {
       name: 'Scavenger',
       price: 10,
       strength: 5,
       agility: 5,
-      img: 'https://picresize.com/images/rsz_scavenger-fighter.jpg',
+      img: '/images/rsz_scavenger-fighter.jpg',
     },
     {
       name: 'Shadow',
       price: 18,
       strength: 7,
       agility: 8,
-      img: 'https://picresize.com/images/rsz_shadow-fighter.jpg',
+      img: '/images/rsz_shadow-fighter.jpg',
     },
     {
       name: 'Tracker',
       price: 14,
       strength: 7,
       agility: 6,
-      img: 'https://picresize.com/images/rsz_tracker-fighter.jpg',
+      img: '/images/rsz_tracker-fighter.jpg',
     },
     {
       name: 'Sharpshooter',
       price: 20,
       strength: 6,
       agility: 8,
-      img: 'https://picresize.com/images/rsz_sharpshooter-fighter.jpg',
+      img: '/images/rsz_sharpshooter-fighter.jpg',
     },
     {
       name: 'Medic',
       price: 15,
       strength: 5,
       agility: 7,
-      img: 'https://picresize.com/images/rsz_medic-fighter.jpg',
+      img: '/images/rsz_medic-fighter.jpg',
     },
     {
       name: 'Engineer',
       price: 16,
       strength: 6,
       agility: 5,
-      img: 'https://picresize.com/images/rsz_engineer-fighter.jpg',
+      img: '/images/rsz_engineer-fighter.jpg',
     },
     {
       name: 'Brawler',
       price: 11,
       strength: 8,
       agility: 3,
-      img: 'https://picresize.com/images/rsz_brawler-fighter.jpg',
+      img: '/images/rsz_brawler-fighter.jpg',
     },
     {
       name: 'Infiltrator',
       price: 17,
       strength: 5,
       agility: 9,
-      img: 'https://picresize.com/images/rsz_infiltrator-fighter.jpg',
+      img: '/images/rsz_infiltrator-fighter.jpg',
     },
     {
       name: 'Leader',
       price: 22,
       strength: 7,
       agility: 6,
-      img: 'https://picresize.com/images/rsz_leader-fighter.jpg',
+      img: '/images/rsz_leader-fighter.jpg',
     },
   ]);
   const [totalStrength, setTotalStrength] = useState(0);
@@ -102,18 +102,18 @@ const App = () => {
   //     console.log(newTeam, money)
   // };
 
-  const handleRemoveFighter = (mainFighter, mainIndex) => {
-    //Initially I was confused and not deleting the selected fighter beceause of parameter naming between the parameters in the event handler and the filter method - the return statement is saying "Filter out and return a new array that DOES NOT have the element we CLICKED based on its index value(acting as its id for the DOM)"
-    const reducedTeam = [...team].filter((subFighter, subindex)=>{
-      return mainIndex !== subindex;
-    });
-    setTeam(reducedTeam);
-    setMoney(money + mainFighter.price);
-    setTotalStrength(totalStrength - mainFighter.strength);
-    setTotalAgility(totalAgility - mainFighter.agility);
-    setAddedFighterMessage(`Removed ${mainFighter.name} from the team`);
-    console.log(mainFighter, mainIndex);
-  };
+  // const handleRemoveFighter = (mainFighter, mainIndex) => {
+  //   //Initially I was confused and not deleting the selected fighter beceause of parameter naming between the parameters in the event handler and the filter method - the return statement is saying "Filter out and return a new array that DOES NOT have the element we CLICKED based on its index value(acting as its id for the DOM)"
+  //   const reducedTeam = [...team].filter((subFighter, subindex)=>{
+  //     return mainIndex !== subindex;
+  //   });
+  //   setTeam(reducedTeam);
+  //   setMoney(money + mainFighter.price);
+  //   setTotalStrength(totalStrength - mainFighter.strength);
+  //   setTotalAgility(totalAgility - mainFighter.agility);
+  //   setAddedFighterMessage(`Removed ${mainFighter.name} from the team`);
+  //   console.log(mainFighter, mainIndex);
+  // };
 
   return (
     <>
@@ -139,7 +139,24 @@ const App = () => {
       })}
       </div> */}
       <div className="team-container">
-        
+        {team.map((fighter, index)=>{
+          return <Team
+          key={index}
+          fighters={fighter}
+          // In order to send the index value as a prop, so we can use it for our event handler and logic we MUST send it as a prop explicitly
+          index={index}
+          team={team}
+          setTeam={setTeam}
+          money={money}
+          setMoney={setMoney}
+          totalStrength={totalStrength}
+          setTotalStrength={setTotalStrength}
+          totalAgility={totalAgility}
+          setTotalAgility={setTotalAgility}
+          addedFighterMessage={addedFighterMessage}
+          setAddedFighterMessage={setAddedFighterMessage}
+          />
+        })}
       </div>
       <h3>Fighters</h3>
       {/* <div className="fighters-container">

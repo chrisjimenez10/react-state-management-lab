@@ -1,13 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
 * {
-  background-color: azure;
+  background-color: hsla(0, 0%, 45%, 1);
+  color: white;
+  font-family: "Black Ops One", system-ui;
+  font-weight: lighter;
 }
 
 ul {
   outline: 2px solid black;
+  margin: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0;
+  box-shadow: 2px 2px 2px black;
 }
 
 li {
