@@ -84,7 +84,7 @@ const App = () => {
   const [totalStrength, setTotalStrength] = useState(0);
   const [totalAgility, setTotalAgility] = useState(0);
   const [addedFighterMessage, setAddedFighterMessage] = useState(""); //NOTE: If we want to display messages based on state change, we NEED to create state variables (regular variables declared and assigned within the functions will not render in the UI)
- 
+
   //---------- Event Handlers ----------\\
 
   // const handleAddFighter = (fighter) => {
@@ -118,11 +118,11 @@ const App = () => {
   return (
     <>
       <body>
-      <h1>Zombie Fighters</h1>
-      <h3>Money: ${money}</h3>
-      <h3>Team Strength: {totalStrength}</h3>
-      <h3>Team Agility: {totalAgility}</h3>
-      <h3>Team: {team.length === 0 ? "Pick some team members!" : addedFighterMessage}</h3>
+      <h1 style={{color: "hsla(360, 100%, 63%, 1)"}}>Zombie Fighters</h1>
+      <h3>Money: <span style={{color: "green"}}>${money}</span></h3>
+      <h3>Team Strength: <span style={{color: "orange"}}>{totalStrength}</span></h3>
+      <h3>Team Agility: <span style={{color: "cyan"}}>{totalAgility}</span></h3>
+      <h3>Team: <span style={{color: "lightgray"}}>{team.length === 0 ? "Pick some team members!" : addedFighterMessage}</span></h3>
       {/* <div className="team-container">
       {team.map((fighter, index)=>{
         return (

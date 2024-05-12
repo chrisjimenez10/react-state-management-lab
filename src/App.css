@@ -43,10 +43,22 @@ button {
   cursor: pointer;
   background-color: black;
   border-radius: 6px;
-  box-shadow: 1px 1px 1px white;
 }
 
 button:hover {
   background-color: hsla(0, 0%, 80%, 0.65);
   transform: scale(1.05);
+}
+
+@media(max-width: 931px){
+  body {
+    height: 100vh;
+    background-size: 1900px 1300px;
+  }
+}
+
+@media(max-width: 751px){
+  body {
+    background-size: cover;
+  }
 }

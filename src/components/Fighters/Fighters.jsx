@@ -23,10 +23,10 @@ const Fighters = (props) => {
           <ul>
             <li>
               <img src={fighters.img}/>
-              <h4>{fighters.name}</h4>
-              <h4>Price: ${fighters.price}</h4>
-              <h4>Strength: {fighters.strength}</h4>
-              <h4>Agility: {fighters.agility}</h4>
+              <h4><span style={{color: "lightgray"}}>{fighters.name}</span></h4>
+              <h4>Price: <span style={{color: "green"}}>${fighters.price}</span></h4>
+              <h4>Strength: <span style={{color: "orange"}}>{fighters.strength}</span></h4>
+              <h4>Agility: <span style={{color: "cyan"}}>{fighters.agility}</span></h4>
               <button id="add-button" onClick={()=> handleAddFighter(fighters)}>Add</button>
             </li>
           </ul>
